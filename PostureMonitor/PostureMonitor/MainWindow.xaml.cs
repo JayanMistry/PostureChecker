@@ -53,8 +53,9 @@ namespace FaceID
         private int max = -1;
         private int min = -1;
         Thread speakingSentenceThread;
+        public System.Windows.MessageBox MyMessageBox;
 
-
+        //MyMessageBox.Invoke(new Action(() => { MyMessageBox.Close(); }));
 
         public MainWindow()
         {
@@ -66,7 +67,7 @@ namespace FaceID
             dbState = string.Empty;
             doRegister = false;
             doUnregister = false;
-
+                        
             // Start SenseManage and configure the face module
             ConfigureRealSense();
 
@@ -223,11 +224,26 @@ namespace FaceID
                     if (inRange())
                     {
                         bdrPictureBorder.BorderBrush = System.Windows.Media.Brushes.LightGreen;
+                        
                     }
                     else
                     {
                         bdrPictureBorder.BorderBrush = System.Windows.Media.Brushes.Red;
-                        //System.Windows.MessageBox.Show("My message here");
+
+                        MessageBoxResult dialogResult = MessageBox.Show("Recalibrate?", "Some Title", MessageBoxButton.YesNo);
+                        
+                        if (dialogResult == MessageBoxResult.Yes)
+                        {
+                            SetSavedDepthToCurrentDepth(); 
+
+
+                        }
+                        else if (dialogResult == MessageBoxResult.No)
+                        {
+                            
+                        }
+
+
                     }
                 }
                 // Show or hide face marker
@@ -337,14 +353,18 @@ namespace FaceID
         }
         private void btnSaveDepth_Click(object sender, RoutedEventArgs e)
         {
+
+            SetSavedDepthToCurrentDepth();
+
+        }
+        private void SetSavedDepthToCurrentDepth()
+        {
             savedFaceDepth = currentFaceDepth;
             setMinMax();
             RangeSlider.Maximum = min;
             RangeSlider.Maximum = max;
             RangeSlider.Value = savedFaceDepth;
             depthSavedlbl.Content = String.Format(savedFaceDepth.ToString());
-
-
         }
    
 
