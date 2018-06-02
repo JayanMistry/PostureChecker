@@ -1,0 +1,14 @@
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\bin\Debug\FaceID.exe.config
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\bin\Debug\FaceID.exe
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\bin\Debug\FaceID.pdb
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\bin\Debug\libpxcclr.cs.dll
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\MainWindow.baml
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\MainWindow.g.cs
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\App.g.cs
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\FaceID_MarkupCompile.cache
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\FaceID.g.resources
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\FaceID.Properties.Resources.resources
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\FaceID.csproj.GenerateResource.Cache
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\FaceID.exe
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\FaceID.pdb
+C:\Users\Jay\Documents\FaceID (1)\FaceID\FaceID\obj\Debug\FaceID.csprojResolveAssemblyReference.cache
