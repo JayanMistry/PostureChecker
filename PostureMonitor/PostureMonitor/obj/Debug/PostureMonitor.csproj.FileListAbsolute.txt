@@ -1,0 +1,16 @@
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\bin\Debug\PostureMonitor.exe.config
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\bin\Debug\PostureMonitor.exe
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\bin\Debug\PostureMonitor.pdb
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\bin\Debug\libpxcclr.cs.dll
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.csprojAssemblyReference.cache
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\MainWindow.baml
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\MainWindow.g.cs
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\App.g.cs
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor_MarkupCompile.cache
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.g.resources
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.Properties.Resources.resources
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.csproj.GenerateResource.cache
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.csproj.CoreCompileInputs.cache
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.csproj.CopyComplete
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.exe
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.pdb
