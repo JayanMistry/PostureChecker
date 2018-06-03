@@ -16,7 +16,7 @@
 using System;
 using System.Windows.Media.Imaging;
 
-namespace FaceID
+namespace PostureMonitor
 {
     class ConvertBitmap
     {

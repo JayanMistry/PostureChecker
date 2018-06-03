@@ -14,3 +14,4 @@ C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\Po
 C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.csproj.CopyComplete
 C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.exe
 C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.pdb
+C:\Users\Jay\Documents\PostureChecker\PostureMonitor\PostureMonitor\obj\Debug\PostureMonitor.PostureDialogForm.resources

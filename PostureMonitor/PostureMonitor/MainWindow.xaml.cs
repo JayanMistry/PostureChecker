@@ -22,8 +22,11 @@ using System.Windows.Controls;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Forms;
+using PostureMonitor;
+using System.Diagnostics;
 
-namespace FaceID
+namespace PostureMonitor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -54,11 +57,13 @@ namespace FaceID
         private int min = -1;
         Thread speakingSentenceThread;
         public System.Windows.MessageBox MyMessageBox;
+        private Thread speakingWordThread;
+
 
         //MyMessageBox.Invoke(new Action(() => { MyMessageBox.Close(); }));
 
         public MainWindow()
-        {
+        { 
             InitializeComponent();
             rectFaceMarker.Visibility = Visibility.Hidden;
             //chkShowFaceMarker.IsChecked = true;
@@ -136,8 +141,6 @@ namespace FaceID
                         // Get the first face detected (index 0)
                         PXCMFaceData.Face face = faceData.QueryFaceByIndex(0);
                         
-                        
-
                         // Retrieve face location data
                         PXCMFaceData.DetectionData faceDetectionData = face.QueryDetection();
 
@@ -145,12 +148,8 @@ namespace FaceID
                        
                         // Process face recognition data
                         if (face != null)
-                        {
-                        
-                                
-                          userId = "Unrecognized";
-                                
-                            
+                        {                  
+                          userId = "Unrecognized";                       
                         }
                     }
                     else
@@ -194,10 +193,7 @@ namespace FaceID
             }
         }
 
-        private void speakText()
-        {
-            RangeSlider.Value = currentFaceDepth;
-        }
+      
 
         private void UpdateUI(Bitmap bitmap)
         {
@@ -224,26 +220,24 @@ namespace FaceID
                     if (inRange())
                     {
                         bdrPictureBorder.BorderBrush = System.Windows.Media.Brushes.LightGreen;
-                        
+
+                       // postureDialogForm.Hide();
                     }
                     else
                     {
+                       // postureDialogForm.ShowDialog();
                         bdrPictureBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                        //postureDialogForm.ShowDialog();
 
-                        MessageBoxResult dialogResult = MessageBox.Show("Recalibrate?", "Some Title", MessageBoxButton.YesNo);
-                        
-                        if (dialogResult == MessageBoxResult.Yes)
+                        speakingWordThread = new Thread(new ThreadStart(speakText));
+
+                        if (!speakingWordThread.IsAlive || speakingWordThread==null)
                         {
-                            SetSavedDepthToCurrentDepth(); 
-
+                            speakingWordThread.Start();
+                            speakingWordThread.IsBackground = true;
 
                         }
-                        else if (dialogResult == MessageBoxResult.No)
-                        {
-                            
-                        }
-
-
+                       
                     }
                 }
                 // Show or hide face marker
@@ -287,7 +281,11 @@ namespace FaceID
                 dbState = "Not Found";
             }
         }
-
+        private static void speakText()
+        {
+            PostureDialogForm ps = new PostureDialogForm();
+            ps.ShowDialog();
+        }
         private void SaveDatabaseToFile()
         {
             // Allocate the buffer to save the database
@@ -372,5 +370,7 @@ namespace FaceID
         {
             ReleaseResources();
         }
+
+        
     }
 }
