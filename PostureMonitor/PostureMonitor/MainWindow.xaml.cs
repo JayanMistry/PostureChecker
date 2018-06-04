@@ -55,9 +55,13 @@ namespace PostureMonitor
         const int range = 50;
         private int max = -1;
         private int min = -1;
-        Thread speakingSentenceThread;
+
         public System.Windows.MessageBox MyMessageBox;
-        private Thread speakingWordThread;
+        private static Thread showPopUpThread = new Thread(new ThreadStart(showPopup));
+        private static Thread hidePopUpThread = new Thread(new ThreadStart(hidePopup));
+        private static bool isPopupShown = false;
+        public static PostureDialogForm postur = new PostureDialogForm();
+        
 
 
         //MyMessageBox.Invoke(new Action(() => { MyMessageBox.Close(); }));
@@ -98,7 +102,7 @@ namespace PostureMonitor
             faceConfig = faceModule.CreateActiveConfiguration();
 
             // Configure for 3D face tracking (if camera cannot support depth it will revert to 2D tracking)
-            faceConfig.SetTrackingMode(PXCMFaceConfiguration.TrackingModeType.FACE_MODE_COLOR_PLUS_DEPTH);
+            faceConfig.SetTrackingMode(PXCMFaceConfiguration.TrackingModeType.FACE_MODE_IR);
 
             // Enable facial recognition
             recognitionConfig = faceConfig.QueryRecognition();
@@ -220,24 +224,18 @@ namespace PostureMonitor
                     if (inRange())
                     {
                         bdrPictureBorder.BorderBrush = System.Windows.Media.Brushes.LightGreen;
-
-                       // postureDialogForm.Hide();
+                        isPopupShown = false;
+                        showPopUpThread = new Thread(new ThreadStart(showPopup));
+                        showPopUpThread.Start();
+                        showPopUpThread.IsBackground = true;
                     }
                     else
                     {
-                       // postureDialogForm.ShowDialog();
+                        isPopupShown = true;
                         bdrPictureBorder.BorderBrush = System.Windows.Media.Brushes.Red;
-                        //postureDialogForm.ShowDialog();
-
-                        speakingWordThread = new Thread(new ThreadStart(speakText));
-
-                        if (!speakingWordThread.IsAlive || speakingWordThread==null)
-                        {
-                            speakingWordThread.Start();
-                            speakingWordThread.IsBackground = true;
-
-                        }
-                       
+                         showPopUpThread = new Thread(new ThreadStart(showPopup));
+                         showPopUpThread.Start();
+                         showPopUpThread.IsBackground = true;
                     }
                 }
                 // Show or hide face marker
@@ -281,11 +279,42 @@ namespace PostureMonitor
                 dbState = "Not Found";
             }
         }
-        private static void speakText()
+        private static void showPopup()
         {
-            PostureDialogForm ps = new PostureDialogForm();
-            ps.ShowDialog();
+            if (isPopupShown == true)
+            {
+                try
+                {
+                    postur.ShowDialog();
+                    postur.BringToFront();
+                }
+                catch(Exception ex)
+                {
+
+                }
+            }
+            else
+            {
+                try
+                {
+                    postur.Hide();
+                }
+                catch(Exception ex) { 
+                
+
+                }
+            }
+           
         }
+
+        private static void hidePopup()
+        {
+            postur.Hide();
+ 
+        }
+
+
+
         private void SaveDatabaseToFile()
         {
             // Allocate the buffer to save the database
